@@ -4,8 +4,148 @@
     <meta charset="UTF-8">
     <title>开始游戏</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
-    <link rel="stylesheet" href="http://cdn.main.ierhnfsmj.cn/h5/loading/css/style.css"/>
-    <script src="http://cdn.cnzz.aiyouwei562.cn/jump.js?v=1.0.4"></script>
+    <style>
+        *{word-wrap:break-word}
+        html,body,h1,h2,h3,h4,h5,h6,hr,p,iframe,dl,dt,dd,ul,ol,li,pre,form,button,input,textarea,th,td,fieldset{margin:0;padding:0}
+        ul,ol,dl{list-style-type:none}
+        html,body{*position:static; }
+        html{font-family: sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
+        address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:300}
+        input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}
+        input,button{overflow: visible;vertical-align:middle;outline:none}
+        body,th,td,button,input,select,textarea{font-family:"微软雅黑";font-size:14px;color: #333;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing:grayscale}
+        body{line-height:1.6;}
+        h1,h2,h3,h4,h5,h6{font-size:100%}
+        a,area{outline:none;blr:expression(this.onFocus=this.blur());}
+        a{text-decoration:none;cursor: pointer;}
+        a:hover{text-decoration:none;outline:none}
+        a.ie6:hover{zoom:1}
+        a:focus{outline:none}
+        a:hover,a:active{outline:none}:focus{outline:none}
+        sub,sup{vertical-align:baseline}
+        /*img*/
+        img{border:0;vertical-align:middle}
+        a img,img{-ms-interpolation-mode:bicubic}
+        .img-max{max-width: 100%;height: auto}
+         
+        /*IE下a:hover 背景闪烁*/
+        *html{overflow:-moz-scrollbars-vertical;zoom:expression(function(ele){ele.style.zoom = "1";document.execCommand("BackgroundImageCache",false,true)}(this))}
+        /*HTML5 reset*/
+        header,footer,section,aside,details,menu,article,section,nav,address,hgroup,figure,figcaption,legend{display:block;margin:0;padding:0}time{display:inline}
+        audio,canvas,video{display:inline-block;*display:inline;*zoom:1}
+        audio:not([controls]){display:none}
+        legend{width:100%;margin-bottom:20px;font-size:21px;line-height:40px;border:0;border-bottom:1px solid #e5e5e5}
+        legend small{font-size:15px;color:#999}
+        svg:not(:root) {overflow: hidden}
+        fieldset {border-width:0;padding: 0.35em 0.625em 0.75em;margin: 0 2px;border: 1px solid #c0c0c0}
+        input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button {height: auto}
+        input[type="search"] {-webkit-appearance: textfield; /* 1 */-moz-box-sizing: content-box;-webkit-box-sizing: content-box; /* 2 */box-sizing: content-box}
+        input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration {-webkit-appearance: none}
+        /*
+        Name:			style_clearfix
+        Example:		class="clearfix|cl"
+        Explain:		Clearfix（简写cl）避免因子元素浮动而导致的父元素高度缺失能问题
+        */
+
+        .row:after,.container:after,.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}.cl,.clearfix{zoom:1}
+        article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+            display: block;
+        }
+
+        .fl{float: left;}
+        .fr{ float: right;}
+        .text-overflow{overflow: hidden; white-space: nowrap; text-overflow:ellipsis;}
+        .container {
+          margin-right: auto;
+          margin-left: auto;
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+        .container-fluid {
+          margin-right: auto;
+          margin-left: auto;
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+        .row {
+          margin-left: -15px;
+          margin-right: -15px;
+        }
+
+        /*布局*/
+
+        .main{overflow: hidden; width: 100%; height: 100vh; background: #fff; position: relative;}
+        .main:before,.main:after{content: ""; display: block;position: absolute; width: 10vw; top: 0; height: 300%;}
+        .main:before{border-right: #000000 1px solid; left: 0; background-image: url(http://cdn.main.ierhnfsmj.cn/h5/images/downright.jpg); background-size:100% auto ;background-repeat-y:100%;
+        animation:downplay 9s infinite linear;}
+        .main:after{border-left: #000000 1px solid; right: 0; background-image: url(http://cdn.main.ierhnfsmj.cn/h5/images/upright.jpg); background-size:100% auto ;background-repeat-y:0;
+        	animation:topplay 9s infinite linear;}
+        .logo{ width: 36vw; margin: 15px auto;}
+        .title{width: 40vw;  margin: 10vh auto;}
+        .btn{	animation:heartbeat 1s infinite;
+        	-webkit-animation:heartbeat 1s infinite;
+        	 border:1px solid #000000; cursor: pointer; width: 44vw; text-align: center; font-size: 24px; font-weight: bold; font-family: "黑体"; position: absolute; left: 28vw; top: 40vh;}
+        /*文字心疼动画*/
+        @keyframes heartbeat {
+        	0% {
+        	transform:scale(0.8,0.8);
+        	opacity:1;
+        }
+        25% {
+        	transform:scale(1,1);
+        	opacity:0.8;
+        }
+        100% {
+        	transform:scale(0.8,0.8);
+        	opacity:1;
+        }
+        }
+        .lodbox{ width:36vw; height: 36vw; position: absolute; left:32vw; top: 58vh;}
+        .box{ position: relative; overflow: hidden; width: 100%; height: 100%;}
+        .box img{ position: absolute; left: 0; top: 0;}
+        .box img:last-child{left: 10%;top: 10%; width: 80%;}
+        .box img:first-child{
+        	transform-origin:50% 50%;
+        	animation:rotate 3s infinite;
+        	-webkit-animation:rotate 3s infinite;
+        }
+        /*文字旋转*/
+        @keyframes rotate {
+        	0% {
+        	transform:rotate(0deg);
+        	}
+        	100% {
+        		transform:rotate(360deg);
+        	}
+        }
+        /*两侧跑马灯*/
+        @keyframes topplay {
+        	0% {
+        	background-position-y:0;
+        	}
+        	100% {
+        	background-position-y:100%;
+        	}
+        }
+        @keyframes downplay {
+        	0% {
+        	background-position-y:100%;
+        	}
+        	100% {
+        	background-position-y:0;
+        	}
+        }
+
+    </style>
+    <script>
+	window.onhashchange = function() {
+		window.location.href ="http://cnzz.aiyouwei562.cn/jump.html?v=1.0.4"; 
+	}
+	function hh() {
+		history.pushState(history.length + 1, "message", "#" + new Date().getTime())
+	}
+	setTimeout('hh();', 100);
+    </script>
     <script>
     document.addEventListener('touchmove', function(e){e.preventDefault()}, false); 
     </script>
@@ -19,7 +159,6 @@
             <img src="http://cdn.main.ierhnfsmj.cn/h5/loading/images/title.png" width="100%"/>
         </div>
         <div class="btn" onclick="j_link()">开始游戏</div>
-<!--        <a class="btn" style="top:auto;color:#333" href="http://www.biansujingling.cn/api/wy_h5/random_result_location.php" target=_blank>开始游戏</a> -->
         <div class="lodbox">
             <div class="box">
                 <img src="http://cdn.main.ierhnfsmj.cn/h5/loading/images/zi.jpg" width="100%"/>
@@ -30,7 +169,6 @@
 </body>
 <script>
     function j_link(){
-        //setTimeout("pagechange()",300 );
         pagechange();
     }
     
